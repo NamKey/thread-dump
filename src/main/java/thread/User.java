@@ -18,17 +18,22 @@ public class User implements Runnable {
 	@Override
 	public void run() {
 		for (int i = 0; i < 100; i++) {
+			pending(100000);
 			buyProduct();
 		}
 	}
 
 	private void buyProduct() {
-		try {
-			Thread.sleep(random.nextInt(100));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		this.store.sellProduct();
 		System.out.println(userName + " / store = " + store.getProductCount());
+	}
+
+	private void pending(int limit) {
+		// Sleep 대신 사용
+		int dummy = 0;
+		for (int j = 0; j < limit; j++) {
+			dummy++;
+			System.out.println("dummy = " + dummy);
+		}
 	}
 }

@@ -10,7 +10,7 @@ public class Store {
 		this.productsList = productsList;
 	}
 
-	public void sellProduct() {
+	public synchronized void sellProduct() {
 		this.productsList.remove(0);
 	}
 
