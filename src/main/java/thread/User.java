@@ -2,10 +2,13 @@ package thread;
 
 import domain.Store;
 
+import java.util.Random;
+
 public class User implements Runnable {
 
 	private Store store;
 	private String userName;
+	private Random random = new Random(5);
 
 	public User(Store store, String name) {
 		this.store = store;
@@ -16,16 +19,16 @@ public class User implements Runnable {
 	public void run() {
 		for (int i = 0; i < 100; i++) {
 			buyProduct();
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
 	private void buyProduct() {
+		try {
+			Thread.sleep(random.nextInt(100));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		this.store.sellProduct();
-		System.out.println(userName +" / store = " + store.getProductCount());
+		System.out.println(userName + " / store = " + store.getProductCount());
 	}
 }

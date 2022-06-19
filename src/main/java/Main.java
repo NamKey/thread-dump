@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		int threadCount = 100;
-		int productCount = 10000;
+		int productCount = 100000;
 
 		// Store Open 준비
 		ArrayList<Long> products = new ArrayList<>(productCount);
@@ -27,8 +27,7 @@ public class Main {
 
 		// 손님들 입장
 		for (Runnable runnable : customers) {
-			Thread newThread = new Thread(runnable);
-			newThread.start();
+			new Thread(runnable).start();
 		}
 	}
 }
