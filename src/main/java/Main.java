@@ -2,6 +2,9 @@ import domain.Store;
 import thread.User;
 
 import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.LinkedTransferQueue;
 
 public class Main {
 
@@ -11,7 +14,7 @@ public class Main {
 		int productCount = 100000;
 
 		// Store Open 준비
-		ArrayList<Long> products = new ArrayList<>(productCount);
+		BlockingQueue<Long> products = new LinkedBlockingQueue<>();
 		for (int i = 0; i < productCount; i++) {
 			products.add((long) i);
 		}
