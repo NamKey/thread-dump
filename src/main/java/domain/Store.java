@@ -1,17 +1,16 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.BlockingQueue;
 
 public class Store {
-	private List<Long> productsList;
+	private BlockingQueue<Long> productsList;
 
-	public Store(List<Long> productsList) {
+	public Store(BlockingQueue<Long> productsList) {
 		this.productsList = productsList;
 	}
 
-	public synchronized void sellProduct() {
-		this.productsList.remove(0);
+	public void sellProduct() {
+		this.productsList.remove();
 	}
 
 	public int getProductCount() {
